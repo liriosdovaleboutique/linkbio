@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lírios do Vale Boutique | Links</title>
+  <meta name="description" content="Lírios do Vale Boutique — moda feminina com elegância e propósito."/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --bg-top:#f7f3f0;
+      --bg-bottom:#ede7e3;
+      --ink-900:#4e4e4e;
+      --ink-700:#5d5d5d;
+      --ink-500:#9b9b9b;
+      --brand-300:#e8d5cf;
+      --brand-400:#d9c2b9;
+      --brand-500:#c4a69d;
+      --brand-600:#9b7d71;
+      --ring: rgba(196,166,157,0.35);
+      --glass: rgba(255,255,255,0.72);
+      --radius:16px;
+      --shadow-1: 0 6px 24px rgba(0,0,0,.06);
+      --shadow-2: 0 16px 44px rgba(196,166,157,.18);
+      --card-title:#cba1aa; /* pedido: cor dos títulos dos cards */
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:linear-gradient(to bottom,var(--bg-top),var(--bg-bottom));
+      min-height:100vh;
+      padding:64px 20px;
+      position:relative;
+      color:var(--ink-700);
+      overflow-x:hidden;
+    }
+
+    /* textura/halo sutil */
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      background:
+        radial-gradient(600px 400px at 15% 40%, rgba(196,166,157,.08), transparent 60%),
+        radial-gradient(500px 500px at 85% 75%, rgba(232,213,207,.10), transparent 60%);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .container{
+      max-width:560px;
+      margin:0 auto;
+      position:relative;
+      z-index:1;
+      animation:pageLoad .6s ease;
+    }
+    @keyframes pageLoad{from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none}}
+
+    /* header */
+    .header{ text-align:center; margin-bottom:56px; }
+    .profile-wrapper{ display:inline-grid; place-items:center; margin-bottom:28px; position:relative; }
+    .profile-ring{
+      position:absolute; inset:-8px;
+      border-radius:999px;
+      background: conic-gradient(from 180deg, rgba(196,166,157,.35), transparent 30%, rgba(232,213,207,.4), transparent 65%, rgba(196,166,157,.35));
+      filter: blur(14px);
+      opacity:.6;
+      pointer-events:none;
+    }
+    .profile-image{
+      width:140px; height:140px; border-radius:50%; object-fit:cover;
+      border:1px solid rgba(196,166,157,.25);
+      box-shadow: 0 10px 40px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,255,255,.5);
+      transition: transform .5s ease, box-shadow .5s ease;
+      background-color:#fff;
+    }
+    .profile-wrapper:hover .profile-image{
+      transform: scale(1.02);
+      box-shadow: 0 16px 50px rgba(196,166,157,.22), inset 0 0 0 1px rgba(255,255,255,.6);
+    }
+
+    /* logo styling */
+    .profile-image.logo{
+      object-fit: contain;
+      background:#fff;
+      padding:18px;
+      border:1px solid rgba(196,166,157,.25);
+    }
+
+    .brand-name{
+      font-family:'Cormorant Garamond',serif;
+      font-size:2.6rem; letter-spacing:2px; font-weight:300; color:var(--ink-700);
+    }
+    .divider{
+      width:72px;height:1px;margin:18px auto 10px;
+      background:linear-gradient(90deg,transparent,var(--brand-500),transparent);
+    }
+    .tagline{
+      color:var(--ink-500); font-size:.95rem; letter-spacing:1.6px; text-transform:uppercase; font-weight:300;
+    }
+
+    /* social icons — luxo em vidro */
+    .social-icons{
+      display:flex; justify-content:center; gap:14px; margin-top:26px;
+    }
+    .social-icon{
+      width:44px;height:44px;border-radius:999px; display:grid; place-items:center;
+      background:var(--glass); backdrop-filter: blur(10px);
+      border:1px solid rgba(196,166,157,.24); box-shadow:var(--shadow-1);
+      transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s;
+      text-decoration:none;
+    }
+    .social-icon:hover{ transform: translateY(-3px); box-shadow: var(--shadow-2); }
+    .icon{ width:20px; height:20px; stroke: var(--ink-700); opacity:.9; }
+
+    /* cards */
+    .links-container{ display:flex; flex-direction:column; gap:16px; }
+    .link-card{
+      position:relative; overflow:hidden;
+      display:block; text-decoration:none; border-radius:var(--radius);
+      padding:28px 24px; background: var(--glass); backdrop-filter: blur(18px);
+      border:1px solid rgba(196,166,157,.18); box-shadow: var(--shadow-1);
+      transition: transform .4s cubic-bezier(.4,0,.2,1), box-shadow .4s, background .4s, border-color .4s;
+    }
+    .link-card:hover{ transform: translateY(-6px); box-shadow: var(--shadow-2); background: rgba(255,255,255,.86); border-color: rgba(196,166,157,.35); }
+
+    .link-card::before{
+      content:""; position:absolute; inset:0; pointer-events:none;
+      background:linear-gradient(135deg, rgba(196,166,157,.06), rgba(232,213,207,.08));
+      opacity:0; transition:opacity .4s ease;
+    }
+    .link-card:hover::before{ opacity:1; }
+
+    .link-card-content{ display:flex; align-items:center; gap:22px; position:relative; z-index:1; }
+    .link-icon-wrapper{
+      width:56px;height:56px;border-radius:12px; display:grid; place-items:center; flex-shrink:0;
+      background: rgba(196,166,157,.12); border:1px solid rgba(196,166,157,.22);
+      transition: transform .4s ease, background .4s ease;
+    }
+    .link-card:hover .link-icon-wrapper{ transform: scale(1.05); background: rgba(196,166,157,.2); }
+
+    .link-text{ flex:1; min-width:0; }
+    .link-title{
+      font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--card-title);
+      letter-spacing:.4px; font-weight:400; margin-bottom:4px;
+    }
+    .link-description{
+      font-size:.9rem; color:var(--ink-500); line-height:1.5; font-weight:300; letter-spacing:.3px;
+    }
+
+    .link-arrow{ width:22px; height:22px; stroke: var(--brand-600); opacity:.75; transition: transform .35s ease, opacity .35s ease; }
+    .link-card:hover .link-arrow{ transform: translateX(4px); opacity:1; }
+
+    /* badge */
+
+	.badge{
+	position:absolute; top:12px; right:12px;
+	background:#5C3A40; /* cor pedida */
+	color:#fff; padding:6px 14px; border-radius:999px; font-size:.72rem; letter-spacing:1.2px;
+	border:1px solid rgba(255,255,255,.25); text-transform:uppercase; font-weight:400;
+	box-shadow: 0 6px 18px rgba(92,58,64,.35);
+		}
+
+
+    /* destaque */
+    .featured-card{
+      background: rgba(250,245,242,.78);
+      border:1px solid rgba(196,166,157,.26);
+      box-shadow: 0 10px 34px rgba(196,166,157,.15);
+    }
+    .featured-card:hover{ background: rgba(250,245,242,.92); }
+
+    /* focus/teclado */
+    .link-card:focus-visible, .social-icon:focus-visible{
+      outline:none; box-shadow: 0 0 0 3px var(--ring), inset 0 0 0 1px #fff;
+    }
+
+    /* footer */
+    .footer{ text-align:center; margin-top:68px; padding-top:38px; border-top:1px solid rgba(196,166,157,.18); }
+    .footer-quote{
+      font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--brand-600);
+      margin-bottom:14px; font-size:1.05rem; font-weight:300; letter-spacing:.4px;
+    }
+    .footer-copyright{ color:#b5b5b5; font-size:.8rem; letter-spacing:1px; }
+
+    /* mobile */
+    @media (max-width:480px){
+      body{ padding:44px 16px; }
+      .brand-name{ font-size:2.2rem; }
+      .link-card{ padding:22px 18px; }
+      .link-title{ font-size:1.22rem; }
+      .link-description{ font-size:.85rem; }
+      .link-icon-wrapper{ width:50px;height:50px; }
+    }
+
+    /* respeito a prefers-reduced-motion */
+    @media (prefers-reduced-motion:reduce){
+      *{ animation:none !important; transition:none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="profile-wrapper" aria-hidden="true">
+        <span class="profile-ring"></span>
+        <img class="profile-image logo" src="logo.png" alt="Logo Lírios do Vale"/>
+      </div>
+
+      <h1 class="brand-name">Lírios do Vale</h1>
+      <div class="divider" aria-hidden="true"></div>
+      <p class="tagline" aria-label="Boutique de moda">Boutique</p>
+
+      <nav class="social-icons" aria-label="Redes sociais">
+        <a class="social-icon" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+          <!-- Instagram -->
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><circle cx="17.5" cy="6.5" r="1.25"/></svg>
+        </a>
+        <a class="social-icon" href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+          <!-- Facebook -->
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M14.5 8H16V4.8A21.8 21.8 0 0 0 13.7 4c-2.6 0-4.2 1.6-4.2 4.5V12H7v3h2.5v7h3.1v-7H16l.5-3h-3V8.9c0-.9.3-1.4 1-1.4Z"/></svg>
+        </a>
+        <a class="social-icon" href="https://wa.me/5511943996296" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <!-- WhatsApp (social usa o número de consultoria) -->
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M20 12.2A8 8 0 0 1 8.6 20l-4.1 1.3 1.3-4.1A8 8 0 1 1 20 12.2Z"/><path d="M8.8 9.2c-.2-.4-.3-.7-.7-.7s-.8 0-1 .1c-.3.1-.7.7-.7 1.4s.7 1.6.8 1.7 1.4 2.2 3.4 3 2 .8 2.4.7c.4 0 1.2-.5 1.3-1s.2-1 .1-1.1c-.1-.1-.3-.2-.7-.4-.3-.2-1.2-.6-1.3-.7s-.3-.1-.5.1-.6.7-.7.8-.3.2-.6.1-1.1-.4-1.9-1.2-.9-1.6-1-1.8c0-.1 0-.3.2-.5.1-.2.3-.5.1-.7s-.5-1.3-.7-1.7Z"/></svg>
+        </a>
+        <a class="social-icon" href="https://pinterest.com/" target="_blank" rel="noopener" aria-label="Pinterest">
+          <!-- Pinterest -->
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 3.5C7.9 3.5 5 6.3 5 10.2c0 2.7 1.6 4.2 2.6 4.2.4 0 .6-1 .6-1.3 0-.3-.4-1.6-.4-2.1 0-.6.3-1.2 1-1.2 1 0 1.6 1.3 1.6 2.4 0 1-.7 2.6-1.6 2.6-.4 0-.7-.3-.6-.7 0-.2.2-.6.2-.8s-.1-.4-.2-.6c-.1-.2-.2-.5-.2-.8 0-1.3 1-2.3 2.4-2.3 1.3 0 2.2.9 2.2 2.1 0 1.4-.6 2.7-1.4 3.8-.4.6-.1 1.2.5 1.2 2 0 3.5-2.1 3.5-4.9 0-2.6-2.1-4.6-5-4.6Z"/></svg>
+        </a>
+      </nav>
+    </header>
+
+    <!-- Links -->
+    <main class="links-container">
+      <!-- 1: Coleção Florescer -->
+      <a class="link-card featured-card" href="https://liriosdovaleboutique.github.io/Website/" target="_blank" rel="noopener" aria-label="Abrir Coleção Florescer">
+        <span class="badge">Lançamento</span>
+        <div class="link-card-content">
+          <div class="link-icon-wrapper" aria-hidden="true">
+            <!-- Diamante -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M3 9 7 3h10l4 6-9 12L3 9Z"/><path d="M7 3l5 6 5-6M3 9h18"/></svg>
+          </div>
+          <div class="link-text">
+            <div class="link-title">Coleção Florescer</div>
+            <p class="link-description">Nossa cápsula exclusiva de moda evangélica — cortes atemporais, tecidos nobres.</p>
+          </div>
+          <!-- seta -->
+          <svg class="link-arrow" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- 2: Dicas & Tendências de Moda (ex-Catálogo) -->
+      <a class="link-card" href="#" target="_blank" rel="noopener" aria-label="Abrir Dicas e Tendências de Moda">
+        <div class="link-card-content">
+          <div class="link-icon-wrapper" aria-hidden="true">
+            <!-- Cabide -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M21 17H3l8.5-5.2a2 2 0 0 0-.8-3.7c0-1.1.8-2.1 2.1-2.1s2.1 1 2.1 2.1c0 .7-.4 1.3-1 1.7"/><path d="M3 17l3.8-2.3"/></svg>
+          </div>
+          <div class="link-text">
+            <div class="link-title">Dicas & Tendências de Moda</div>
+            <p class="link-description">Curadoria de looks, tendências e combinações para te inspirar.</p>
+          </div>
+          <svg class="link-arrow" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- 3: Comunidade VIP (WhatsApp link fornecido) -->
+      <a class="link-card featured-card" href="https://chat.whatsapp.com/JsqHqcWm2l54dpJDO6gmA7?mode=wwc" target="_blank" rel="noopener" aria-label="Entrar na Comunidade VIP WhatsApp">
+        <span class="badge">Exclusivo</span>
+        <div class="link-card-content">
+          <div class="link-icon-wrapper" aria-hidden="true">
+            <!-- Coroa -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M3 9l4 2 5-6 5 6 4-2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/></svg>
+          </div>
+          <div class="link-text">
+            <div class="link-title">Comunidade VIP</div>
+            <p class="link-description">Acesso antecipado, condições especiais e atendimento prioritário.</p>
+          </div>
+          <svg class="link-arrow" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- 4: Consultoria de Estilo (usa número fornecido) -->
+      <a class="link-card" href="https://wa.me/5511943996296" target="_blank" rel="noopener" aria-label="Abrir Consultoria de Estilo no WhatsApp">
+        <div class="link-card-content">
+          <div class="link-icon-wrapper" aria-hidden="true">
+            <!-- Paleta de cores -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 1 0 0 18c1.7 0 3-1.3 3-3 0-1-.8-1.8-1.8-1.8H11a2 2 0 0 1-2-2v-2.2C9 9.8 10.8 8 13 8h.2A3 3 0 0 0 12 3Z"/><circle cx="7.5" cy="10" r="1.2"/><circle cx="7.5" cy="14.2" r="1.2"/><circle cx="10.6" cy="7.6" r="1.2"/></svg>
+          </div>
+          <div class="link-text">
+            <div class="link-title">Consultoria de Estilo</div>
+            <p class="link-description">Atendimento direto no WhatsApp: +55 11 94399‑6296.</p>
+          </div>
+          <svg class="link-arrow" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-quote">“Vista-se de graça, fé e propósito.”</p>
+      <p class="footer-copyright">© MMXXV LÍRIOS DO VALE BOUTIQUE</p>
+    </footer>
+  </div>
+
+  <script>
+    // clique com microinteração
+    document.querySelectorAll('.link-card').forEach(card=>{
+      card.addEventListener('click',()=>{
+        card.style.transform='scale(.985) translateY(-4px)';
+        setTimeout(()=>{ card.style.transform=''; },160);
+      });
+    });
+
+    // parallax suave do header (respeita reduced motion automaticamente via CSS)
+    let ticking=false;
+    window.addEventListener('scroll',()=>{
+      if(!ticking){
+        window.requestAnimationFrame(()=>{
+          const y=window.pageYOffset||0;
+          const header=document.querySelector('.header');
+          if(header && y < 280){
+            header.style.transform=`translateY(${y*0.14}px)`;
+            header.style.opacity= String(1 - y*0.002);
+          }
+          ticking=false;
+        });
+        ticking=true;
+      }
+    });
+  </script>
+</body>
+</html>
